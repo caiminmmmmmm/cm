@@ -5,8 +5,8 @@ app = Sanic(__name__)
 
 # MongoDB setup
 client = MongoClient('localhost', 27017)
-database = client['']
-BookRepo = database['book_collection_name']
+database = client['cm']
+BookRepo = database['book']
 
 # Model for Book
 class Book:
@@ -39,6 +39,7 @@ async def get_book(request, id):
 async def create_book(request):
     data = request.json
     book = Book(data['id'], data['title'], data['description'])
+    # book = Book(1,1,1)
     BookRepo.insert_one(book.__dict__)
     return response.json({'message': 'Book created successfully'}, status=201)
 
