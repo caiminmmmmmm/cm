@@ -7,6 +7,7 @@ app = Sanic(__name__)
 mongodb_uri = "mongodb://localhost:27017"
 database_name = 'cm'
 
+
 class BookDB:
     def __init__(self, uri, database_name):
         self.client = AsyncIOMotorClient(uri)
